@@ -1,7 +1,7 @@
 import minetweaker.tasks.RegisterZenClassesTask;
 
 apply plugin: 'java'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 version = ext.mineTweakerVersion
 
@@ -19,6 +19,6 @@ tasks.jar.dependsOn(makeRegistry)
 
 dependencies {
     dependencies {
-        compile project(':ZenScript')
+        implementation project(':ZenScript')
     }
 }

@@ -1,14 +1,9 @@
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
-        maven {
-            name = "gt"
-            url = "https://gregtech.overminddl1.com/"
-        }
         maven {
             name = "forge"
-            url = "http://files.minecraftforge.net/maven"
+            url = "https://maven.minecraftforge.net/"
         }
         maven {
             name = "sonatype"
@@ -20,33 +15,23 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.github.GTNewHorizons:ForgeGradle:1.2.4'
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.1.+') {
+            changing = true
+        }
     }
 }
 
 apply plugin: 'base' // To add "clean" task to the root project.
 apply from: 'configuration.gradle'
-apply plugin: "maven"
+apply plugin: "maven-publish"
 
 subprojects {
     apply from: rootProject.file('common.gradle')
-    apply plugin: 'eclipse'
+//    apply plugin: 'eclipse'
 }
 repositories {
     mavenLocal()
     mavenCentral()
-    /*maven {
-        name "Tesla"
-        url 'http://maven.epoxide.xyz'
-    }
-    maven {
-        name 'Mobius'
-        url 'http://mobiusstrip.eu/maven'
-    }
-    maven {
-        name 'JEI'
-        url "http://dvs1.progwml6.com/files/maven"
-    } unused */
 }
 configurations {
     deployerJars
@@ -65,7 +50,7 @@ task assembleMC1710(type: Jar, dependsOn: [\
 		':ZenScript:build',
 		':MineTweaker3-API:build']
 		+ projects1710.collect { ':' + it + ":build" }) {
-	archiveName="CraftTweaker-1.7.10-${mineTweakerVersion}-legacy.jar"
+	archiveFileName="CraftTweaker-1.7.10-${mineTweakerVersion}-legacy.jar"
 
 	from zipTree(project(":ZenScript").jar.archivePath)
 	from zipTree(project(':MineTweaker3-API').jar.archivePath)
@@ -79,7 +64,7 @@ task assembleDevBase1710(type: Jar, dependsOn: [
 		':ZenScript:build',
 		':MineTweaker3-API:build',
 		':MineTweaker3-MC1710-Main:build']) {
-	archiveName="CraftTweaker-Dev-1.7.10-${mineTweakerVersion}-legacy.jar"
+	archiveFileName="CraftTweaker-Dev-1.7.10-${mineTweakerVersion}-legacy.jar"
 
 	from project(':ZenScript').sourceSets.main.output
 	from project(':MineTweaker3-API').sourceSets.main.output
@@ -90,7 +75,7 @@ task assembleDevFull1710(type: Jar, dependsOn: [
 		':ZenScript:build',
 		':MineTweaker3-API:build']
 		+ projects1710.collect { ':' + it + ":build" }) {
-	archiveName="CraftTweaker-Dev-Full-1.7.10-${mineTweakerVersion}-legacy.jar"
+	archiveFileName="CraftTweaker-Dev-Full-1.7.10-${mineTweakerVersion}-legacy.jar"
 
 	from project(':ZenScript').sourceSets.main.output
 	from project(':MineTweaker3-API').sourceSets.main.output
@@ -110,8 +95,3 @@ task assembleAll(dependsOn: [
 configurations {
     deployerJars
 }
-
-
-
-
-

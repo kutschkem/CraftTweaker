@@ -14,10 +14,10 @@ version = "1.0"
 archivesBaseName = project.projectDir.name
 
 dependencies {
-	compile project(':ZenScript')
-	compile project(':MineTweaker3-API')
-	compile project(':MineTweaker3-MC1710-Main')
-	compile files('libs/NotEnoughItems-1.7.10-1.0.2.15-dev.jar')
+	implementation project(':ZenScript')
+	implementation project(':MineTweaker3-API')
+	implementation project(':MineTweaker3-MC1710-Main')
+	implementation files('libs/NotEnoughItems-1.7.10-1.0.2.15-dev.jar')
 }
 
 task makeRegistry(type: RegisterZenClassesTask) {
