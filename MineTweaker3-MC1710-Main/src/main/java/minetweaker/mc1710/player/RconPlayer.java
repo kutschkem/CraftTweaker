@@ -3,6 +3,7 @@ package minetweaker.mc1710.player;
 import minetweaker.MineTweakerAPI;
 import minetweaker.api.chat.IChatMessage;
 import minetweaker.api.data.IData;
+import minetweaker.api.entity.IEntity;
 import minetweaker.api.item.IItemStack;
 import minetweaker.api.player.IPlayer;
 import net.minecraft.command.ICommandSender;
@@ -38,22 +39,22 @@ public class RconPlayer implements IPlayer {
     public IData getData() {
         return null;
     }
-    
+
     @Override
     public int getXP() {
         return 0;
     }
-    
+
     @Override
     public void setXP(int xp) {
-    
+
     }
-    
+
     @Override
     public void removeXP(int xp) {
-    
+
     }
-    
+
     @Override
     public void update(IData data) {
 
@@ -123,6 +124,11 @@ public class RconPlayer implements IPlayer {
             return false;
 
         return ((RconPlayer) other).sender == sender;
+    }
+
+    @Override
+    public IEntity getEntity() {
+      return null; //TODO is this always not related to an entity?
     }
 
     @Override

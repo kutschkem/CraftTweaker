@@ -3,6 +3,7 @@ package minetweaker.api.player;
 import minetweaker.api.chat.IChatMessage;
 import minetweaker.api.data.IData;
 import minetweaker.api.item.IItemStack;
+import minetweaker.api.entity.IEntity;
 import stanhebben.zenscript.annotations.*;
 
 /**
@@ -58,6 +59,9 @@ public interface IPlayer {
 
     @ZenGetter("adventure")
     boolean isAdventure();
+
+    @ZenGetter("entity")
+    IEntity getEntity();
 
     @ZenMethod
     void give(IItemStack stack);

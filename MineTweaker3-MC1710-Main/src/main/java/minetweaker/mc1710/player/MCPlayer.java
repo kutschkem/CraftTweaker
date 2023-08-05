@@ -9,12 +9,14 @@ package minetweaker.mc1710.player;
 import minetweaker.MineTweakerAPI;
 import minetweaker.api.chat.IChatMessage;
 import minetweaker.api.data.IData;
+import minetweaker.api.entity.IEntity;
 import minetweaker.api.item.IItemStack;
 import minetweaker.api.minecraft.MineTweakerMC;
 import minetweaker.api.player.IPlayer;
 import minetweaker.mc1710.MineTweakerConfig;
 import minetweaker.mc1710.MineTweakerMod;
 import minetweaker.mc1710.data.NBTConverter;
+import minetweaker.mc1710.entity.MCEntity;
 import minetweaker.mc1710.network.MineTweakerCopyClipboardPacket;
 import minetweaker.mc1710.network.MineTweakerOpenBrowserPacket;
 import net.minecraft.entity.player.EntityPlayer;
@@ -51,25 +53,25 @@ public class MCPlayer implements IPlayer {
 	public IData getData() {
 		return NBTConverter.from(player.getEntityData(), true);
 	}
-    
+
     @Override
     public int getXP() {
         return player.experienceLevel;
     }
-    
+
     @Override
     public void setXP(int xp) {
         player.experienceLevel = 0;
         player.addExperienceLevel(xp);
     }
-    
+
     @Override
     public void removeXP(int xp) {
         final int newLvl = Math.max(0, player.experienceLevel - xp);
         player.experienceLevel = 0;
         player.addExperienceLevel(newLvl);
     }
-    
+
     @Override
 	public void update(IData data) {
 		NBTConverter.updateMap(player.getEntityData(), data);
@@ -141,6 +143,11 @@ public class MCPlayer implements IPlayer {
 					new MineTweakerCopyClipboardPacket(value),
 					(EntityPlayerMP) player);
 		}
+	}
+
+	@Override
+	public IEntity getEntity() {
+		return new MCEntity(player);
 	}
 
 	@Override

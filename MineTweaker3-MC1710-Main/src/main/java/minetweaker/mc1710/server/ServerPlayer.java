@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import minetweaker.api.chat.IChatMessage;
 import minetweaker.api.data.IData;
+import minetweaker.api.entity.IEntity;
 import minetweaker.api.item.IItemStack;
 import minetweaker.api.player.IPlayer;
 import net.minecraft.server.dedicated.DedicatedServer;
@@ -48,22 +49,22 @@ public class ServerPlayer implements IPlayer {
 		// TODO: implement
 		return null;
 	}
-    
+
     @Override
     public int getXP() {
         return 0;
     }
-    
+
     @Override
     public void setXP(int xp) {
-    
+
     }
-    
+
     @Override
     public void removeXP(int xp) {
-    
+
     }
-    
+
     @Override
 	public void update(IData data) {
 		// TODO: implement
@@ -137,5 +138,10 @@ public class ServerPlayer implements IPlayer {
 	@Override
 	public void give(IItemStack stack) {
 
+	}
+
+	@Override
+	public IEntity getEntity() {
+		return null;
 	}
 }

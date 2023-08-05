@@ -14,6 +14,6 @@ public interface IDimension extends IBlockGroup {
     @ZenMethod
     int getBrightness(int x, int y, int z);
 
-    @ZenMethod
+    @ZenGetter("id")
     int getId();
 }
