@@ -31,6 +31,7 @@ tasks.jar.dependsOn(makeRegistry)
 
 processResources
 {
+		duplicatesStrategy = DuplicatesStrategy.INCLUDE
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
