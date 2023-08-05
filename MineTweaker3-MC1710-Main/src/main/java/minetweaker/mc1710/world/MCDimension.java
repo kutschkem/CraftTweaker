@@ -41,4 +41,9 @@ public class MCDimension implements IDimension {
 	public IBlock getBlock(int x, int y, int z) {
 		return MineTweakerMC.getBlock(world, x, y, z);
 	}
+
+	@Override
+	public int getId() {
+		return world.provider.dimensionId;
+	}
 }
